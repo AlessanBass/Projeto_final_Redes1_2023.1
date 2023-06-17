@@ -1,0 +1,10 @@
+javac ClienteTabuada.java
+javac ServidorTabuada.java
+java ServidorTabuada
+java ClienteTabuada
+
+===============================
+ // Conecta ao servidor utilizando o endereço IP e a porta corretos
+  Socket servidor = new Socket("192.168.0.100", 12345);
+OBS: trocar pelo endereço ip da máquina
+==============================================
