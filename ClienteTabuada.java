@@ -5,7 +5,7 @@ public class ClienteTabuada {
     public static void main(String[] args) {
         try {
             // Conecta-se ao servidor na porta 12345
-            Socket servidor = new Socket("10.0.0.100", 12345);
+            Socket servidor = new Socket("192.168.56.1", 12345);
             System.out.println("Conexao estabelecida com o servidor");
 
             // Cria um BufferedReader para ler a entrada do usuario

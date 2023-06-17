@@ -6,7 +6,7 @@ public class ServidorTabuada {
         try {
             // Cria o ServerSocket ouvindo a porta 12345
             ServerSocket servidor = new ServerSocket(12345);
-            System.out.println("Servidor ouvindo a porta 12345");
+            System.out.println("SERVIDOR ESCUTANDO NA PORTA 12345");
 
             while (true) {
                 // Espera a conexao de um cliente
@@ -22,21 +22,23 @@ public class ServidorTabuada {
 
                     // Cria um PrintWriter para enviar a tabuada de volta para o cliente
                     PrintWriter saida = new PrintWriter(cliente.getOutputStream(), true);
-
+                    saida.println("======== TABUADA ============");
                     saida.println("Tabuada do " + numero + ":");
 
                     for (int i = 1; i <= 10; i++) {
                         int resultado = numero * i;
                         saida.println(numero + " x " + i + " = " + resultado);
                     }
-
+                    saida.println("=============================");
+                    saida.println("======== PAR/IMPAR ? ========");
                     // Verificar se e par ou impar
                     if (numero % 2 == 0) {
-                        saida.println(numero + " e um numero par");
+                        saida.println("[" + numero + "]" + " e um numero par");
                     } else {
-                        saida.println(numero + " e um numero impar");
+                        saida.println("[" + numero + "]" + " e um numero impar");
                     }
-
+                    saida.println("===========================");
+                    saida.println("======== EH PRIMO? ========");
                     // Verificar se e primo
                     boolean isPrime = true;
                     if (numero < 2) {
@@ -51,18 +53,24 @@ public class ServidorTabuada {
                     }
 
                     if (isPrime) {
-                        saida.println(numero + " eh um numero primo");
+                        saida.println("[" + numero + "]" + " eh um numero primo");
                     } else {
-                        saida.println(numero + " nao e um numero primo");
+                        saida.println("[" + numero + "]" + " nao e um numero primo");
                     }
 
                     // Fecha os recursos
+                    saida.println("===========================");
+                    saida.println(">>>  CONEXAO ENCERRADA! <<<");
                     saida.close();
                 } catch (NumberFormatException e) {
                     PrintWriter saida = new PrintWriter(cliente.getOutputStream(), true);
-                    saida.println("Entrada invalida");
+                    saida.println("========== ERRO! ==========");
+                    saida.println("ENTRADA INVALIDA!");
 
                     // Fecha os recursos
+                    saida.println("===========================");
+                    saida.println(">>>  CONEXAO ENCERRADA! <<<");
+                    saida.println("===========================");
                     saida.close();
                 }
 
